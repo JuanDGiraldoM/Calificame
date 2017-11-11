@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CalificameLibrary
 {
-    class MyDBContext : DbContext
+    public class MyDbContext : DbContext
     {
         public DbSet<Negocio> Negocios { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
 
-        public MyDBContext() : base("name=local")
+        public MyDbContext() : base("name=local")
         {
 
         }

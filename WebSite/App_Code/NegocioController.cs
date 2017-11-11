@@ -15,15 +15,40 @@ public class NegocioController : ApiController
     }
 
     // GET api/<controller>/5
-    public string Get(int id)
+    public Negocio Get(int id)
     {
-        return "value";
+        var ctx = new MyDbContext();
+        var query = ctx.Negocios.Where(x => x.Id == id);
+        return query.FirstOrDefault();
     }
 
     // POST api/<controller>
     public void Post([FromBody] Calificacion value)
     {
         var ctx = new MyDbContext();
+        var query = ctx.Negocios.Where(x => x.Id == value.IdNegocio);
+        var resultado = query.FirstOrDefault();
+
+        if (resultado != null)
+        {
+            var comentario = new Comentario()
+            {
+                Calificacion = value.Valor,
+                Texto = value.Comentario,
+                Negocio = resultado,
+                NombreUsuario = value.NombreUsuario
+                //Fecha = value.Fecha
+            };
+
+            if(resultado.Comentarios == null)
+                resultado.Comentarios = new List<Comentario>();
+
+            Console.WriteLine(resultado.Comentarios.Count());
+
+            resultado.Comentarios.Add(comentario);
+            ctx.Comentarios.Add(comentario);
+            ctx.SaveChanges();
+        }
     }
 
     // PUT api/<controller>/5

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalificameLibrary
 {
-    class Negocio
+    public class Negocio
     {
         public int Id { get; set; }
         public string NIT { get; set; }
