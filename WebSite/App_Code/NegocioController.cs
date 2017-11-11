@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalificameLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -20,8 +21,9 @@ public class NegocioController : ApiController
     }
 
     // POST api/<controller>
-    public void Post([FromBody]string value)
+    public void Post([FromBody] Calificacion value)
     {
+        var ctx = new MyDbContext();
     }
 
     // PUT api/<controller>/5

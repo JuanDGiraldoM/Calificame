@@ -49,6 +49,10 @@
   <ItemGroup>
     <Compile Include="Calificacion.cs" />
     <Compile Include="Comentario.cs" />
+    <Compile Include="Migrations\201711102305449_setup.cs" />
+    <Compile Include="Migrations\201711102305449_setup.Designer.cs">
+      <DependentUpon>201711102305449_setup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDBContext.cs" />
     <Compile Include="Negocio.cs" />
@@ -57,6 +61,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711102305449_setup.resx">
+      <DependentUpon>201711102305449_setup.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
